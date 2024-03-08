@@ -3,14 +3,15 @@ version: "3.8"
 services:
   nginx:
     build:
-      context: ./nginx
+      context: ./docker/nginx
       dockerfile: Dockerfile
     ports:
       - 8080:80
     volumes:
-      - ./src:/var/www/html/public
+      - ./src:/var/www/html
     depends_on:
       - mysql
+      - php
   mysql:
     image: mysql:8.3
     environment:
@@ -21,4 +22,10 @@ services:
     ports:
       - 33060:3306
     volumes:
-      - ./.data/mysql:/var/lib/mysql
+      - ./docker/.data/mysql:/var/lib/mysql
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www/html
