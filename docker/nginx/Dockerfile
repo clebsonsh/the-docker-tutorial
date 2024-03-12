@@ -1,7 +1,7 @@
 FROM nginx:stable-alpine
 
-ENV NGINX_USER=laravel
-ENV NGINX_GROUP=laravel
+ENV NGINX_USER=1001
+ENV NGINX_GROUP=1001
 
 RUN mkdir -p /var/www/html/public
 

@@ -29,3 +29,10 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./src:/var/www/html
+  composer:
+    build:
+      context: ./docker/composer
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www/html
+    working_dir: /var/www/html
